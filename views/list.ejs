@@ -1,0 +1,18 @@
+<%- include('head') %>
+<h2>全部日记</h2>
+<% if (entries.length === 0) { %>
+  <p class="empty">还没有日记。</p>
+<% } else { %>
+  <ul class="diary-list">
+    <% entries.forEach(function(entry) { %>
+      <li class="diary-item">
+        <div class="diary-date"><%= entry.date %></div>
+        <h3 class="diary-title"><a href="<%= entry.url %>"><%= entry.title %></a></h3>
+        <% if (entry.summary) { %>
+          <p class="diary-summary"><%= entry.summary %></p>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+<%- include('foot') %>

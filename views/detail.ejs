@@ -1,0 +1,30 @@
+<%- include('head', { title: title }) %>
+<article>
+  <header class="article-header">
+    <h1><%= title %></h1>
+    <div class="article-meta">
+      <time><%= date %></time>
+      <% if (tags && tags.length > 0) { %>
+        <span class="article-tags">
+          <% tags.forEach(function(tag) { %>
+            <span class="tag"><%= tag %></span>
+          <% }) %>
+        </span>
+      <% } %>
+    </div>
+  </header>
+  <div class="article-body">
+    <%- html %>
+  </div>
+</article>
+<% if (typeof prev !== 'undefined' || typeof next !== 'undefined') { %>
+<nav class="article-nav">
+  <% if (prev) { %>
+    <a href="<%= prev.url %>" class="prev">&larr; <%= prev.title %></a>
+  <% } %>
+  <% if (next) { %>
+    <a href="<%= next.url %>" class="next"><%= next.title %> &rarr;</a>
+  <% } %>
+</nav>
+<% } %>
+<%- include('foot') %>
